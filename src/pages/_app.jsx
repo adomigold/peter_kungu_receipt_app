@@ -23,7 +23,7 @@ function MyApp({ Component, pageProps }) {
 
         {/* Favicon icon */}
         <link rel="shortcut icon" type="image/x-icon" href="https://www.shuledirect.org/uploads/5e2adbe99a833.png" />
-        <title>Peter Kungu Receipt - Generate Peter's transport receipt</title>
+        <title>Peter Kungu Receipt - Generate Peter&apos;s transport receipt</title>
       </Head>
       <Component key={router.asPath} {...pageProps} />
     </>
