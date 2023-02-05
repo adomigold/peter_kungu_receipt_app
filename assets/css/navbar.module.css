@@ -1,0 +1,45 @@
+    .orSeperator {
+        margin-top: 32px;
+        text-align: center;
+        border-top: 1px solid #e0e0e0;
+    }
+    
+    .orSeperatorB {
+        color: #666;
+        padding: 0 8px;
+        width: 30px;
+        height: 30px;
+        font-size: 13px;
+        text-align: center;
+        line-height: 26px;
+        background: #fff;
+        display: inline-block;
+        border: 1px solid #e0e0e0;
+        border-radius: 50%;
+        position: relative;
+        top: -15px;
+        z-index: 1;
+    }
+    
+    @media (max-width: 768px) {
+        .navbar .dropdown-menu.form-wrapper {
+            width: 100%;
+            padding: 10px 15px;
+            background: transparent;
+            border: none;
+        }
+        .navbar .form-inline {
+            display: block;
+        }
+        .navbar .input-group {
+            width: 100%;
+        }
+        .navbar .nav .btn-primary,
+        .navbar .nav .btn-primary:active {
+            display: block;
+        }
+    }
+    
+    .navbar-toggler:focus {
+        box-shadow: 0 0 0 0;
+    }

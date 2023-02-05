@@ -1,0 +1,53 @@
+{
+    "metadata": {
+        "timestamp_utc": "2022-08-13 16:36:59",
+        "music": [{
+            "score": 100,
+            "release_date": "2020-09-30",
+            "acrid": "6fe66902312fd4341e8600ff8dda8f07",
+            "artists": [{
+                "name": "Ozuna"
+            }],
+            "external_metadata": {
+                "deezer": {
+                    "track": {
+                        "name": "Una Locura",
+                        "id": "1095207282"
+                    },
+                    "album": {
+                        "name": ""
+                    },
+                    "artists": [{
+                        "name": "Ozuna"
+                    }]
+                }
+            },
+            "result_from": 1,
+            "genres": [{
+                "name": "Dancehall"
+            }],
+            "title": "Una Locura",
+            "album": {
+                "name": "Una Locura"
+            },
+            "duration_ms": 230000,
+            "db_begin_time_offset_ms": 36840,
+            "db_end_time_offset_ms": 44600,
+            "sample_begin_time_offset_ms": 0,
+            "sample_end_time_offset_ms": 8020,
+            "play_offset_ms": 44600,
+            "external_ids": {
+                "isrc": "QZNJV2036087",
+                "upc": "758869173860"
+            },
+            "label": "NJ music records"
+        }]
+    },
+    "cost_time": 0.92000007629395,
+    "result_type": 0,
+    "status": {
+        "version": "1.0",
+        "code": 0,
+        "msg": "Success"
+    }
+}

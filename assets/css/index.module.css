@@ -1,0 +1,68 @@
+.indexPage {
+    background-color: white !important;
+}
+
+
+/* Remove IE arrow */
+
+.selectMain::-ms-expand {
+    display: none;
+}
+
+
+/* Custom Select */
+
+.selectMain {
+    appearance: none;
+    background-clip: padding-box;
+    background-color: #fff;
+    border: 1px solid #dbd8e9;
+    border-radius: .25rem;
+    color: #18113c;
+    display: block;
+    font-size: .875rem;
+    font-weight: 400;
+    line-height: 1.6;
+    padding: .75rem 1.25rem;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    width: 100%;
+    font-size: 'medium'
+}
+
+@media screen and (max-width: 470px) {
+    #btn_searchbus {
+        margin-bottom: 18px;
+        margin-top: -21px !important;
+    }
+    #selectdivFare {
+        width: 225% !important;
+    }
+    #selectdivType {
+        width: 174% !important;
+    }
+}
+
+#selectdivFare {
+    width: 154% !important;
+}
+
+#selectdivType {
+    width: 120% !important;
+}
+
+.headerColors {
+    color: #333333
+}
+
+.buyTicketForm {
+    border: solid thin rgb(204, 201, 201);
+    padding-left: 19px
+}
+
+.inputFontsize {
+    font-size: medium;
+}
+
+#selectdiv {
+    width: 150%
+}
