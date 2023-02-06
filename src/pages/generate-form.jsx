@@ -1,10 +1,51 @@
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import Flatpickr from "react-flatpickr";
 import ReactToPrint from 'react-to-print';
 import BoltTemplate from '../components/bolt'
 
 export default function GenerateForm() {
     var componentRef = useRef(null)
+    const [data, setData] = useState({})
+
+    function code(length) {
+        var result = '';
+        var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+        var charactersLength = characters.length;
+        for (var i = 0; i < length; i++) {
+            result += characters.charAt(Math.floor(Math.random() * charactersLength));
+        }
+        return result;
+    }
+
+    function getRandomFloat(min, max, decimalPlaces) {
+        var factor = Math.pow(10, decimalPlaces);
+        return Math.floor(Math.random() * (max - min + 1) * factor) / factor + min;
+      }
+      
+
+    useEffect(() => {
+        var form = document.getElementById('form')
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault()
+            const formData = new FormData(e.target)
+            const data = Object.fromEntries(formData)
+            setData(data)
+            var InvoiceNo = `${code(7)}-${code(6)}-${code(8)}`
+            data.InvoiceNo = InvoiceNo
+
+            // Generate random number between 50 to 300
+            var random = getRandomFloat(50, 200, 2)
+            data.bookingFee = random
+
+            // Generate random time
+            var hours = Math.floor(Math.random() * 24) + 1;
+            var minutes = Math.floor(Math.random() * 60) + 1;
+            var time = `${hours}:${minutes}`
+            data.time = time
+        })
+    }, [data])
+
     return (
         <main>
             <section style={{ backgroundColor: "#414B57" }} className="py-6 py-lg-12">
@@ -25,7 +66,7 @@ export default function GenerateForm() {
                         </div>
                     </div>
                     {/*-- form */}
-                    <form>
+                    <form id="form">
                         <div className="row">
                             {/*-- col */}
                             <div className="col-lg-4 col-md-4 col-12">
@@ -58,33 +99,33 @@ export default function GenerateForm() {
                                         {/*-- col */}
                                         <div className="mb-3 col-12 col-md-6">
                                             {/*-- label */}
-                                            <label className="form-label text-light" for="fname">Passenger Fullname<span className="text-danger">*</span></label>
+                                            <label className="form-label text-light" for="passenger_name">Passenger Fullname<span className="text-danger">*</span></label>
                                             {/*-- input */}
-                                            <input type="text" id="fname" className="form-control" placeholder="Passenger Fullname" required="" />
+                                            <input type="text" name="passenger_name" id="passenger_name" className="form-control" placeholder="Passenger Fullname" />
                                         </div>
                                         <div className="mb-3 col-12 col-md-6">
                                             {/*-- label */}
-                                            <label className="form-label text-light" for="lname">Driver Fullname<span className="text-danger">*</span></label>
+                                            <label className="form-label text-light" for="driver_name">Driver Fullname<span className="text-danger">*</span></label>
                                             {/*-- input */}
-                                            <input type="text" id="lname" className="form-control" placeholder="Driver Fullname" required="" />
+                                            <input type="text" name="driver_name" id="driver_name" className="form-control" placeholder="Driver Fullname" />
                                         </div>
                                         <div className="mb-3 col-12 col-md-6">
                                             {/*-- label */}
                                             <label className="form-label text-light" for="lname">Where To<span className="text-danger">*</span></label>
                                             {/*-- input */}
-                                            <input type="text" id="lname" className="form-control" placeholder="Where To" required="" />
+                                            <input type="text" name="where_to" id="lname" className="form-control" placeholder="Where To" />
                                         </div>
                                         <div className="mb-3 col-12 col-md-6">
                                             {/*-- label */}
                                             <label className="form-label text-light" for="lname">Region<span className="text-danger">*</span></label>
                                             {/*-- input */}
-                                            <input type="text" id="lname" className="form-control" placeholder="Region" required="" />
+                                            <input type="text" name="region" id="lname" className="form-control" placeholder="Region" />
                                         </div>
                                         <div className="mb-3 col-12 col-md-12">
                                             {/*-- label */}
                                             <label className="form-label text-light" for="email">Amount<span className="text-danger">*</span></label>
                                             {/*-- input */}
-                                            <input type="email" id="email" className="form-control" placeholder="Write amount to be spent" required="" />
+                                            <input type="number" name="amount" id="email" className="form-control" placeholder="Write amount to be spent" />
                                         </div>
                                         <div className="mb-3 col-12 col-md-12">
                                             <label className="form-label text-light" for="email">Boarding Date<span className="text-danger">*</span></label>
@@ -95,9 +136,9 @@ export default function GenerateForm() {
                                                         "dateFormat": "Y-m-d", "disableMobile": true
                                                     }}
                                                     placeholder="Boarding Date..."
-                                                    name="date_from"
+                                                    name="date"
                                                 />
-                                                <select className="form-select" id="inputGroupSelect02" style={{ "maxWidth": "8rem" }}>
+                                                <select name="company" className="form-select" id="inputGroupSelect02" style={{ "maxWidth": "8rem" }}>
                                                     <option selected="1">Bolt</option>
                                                     <option value="2">Uber</option>
                                                 </select>
@@ -110,10 +151,7 @@ export default function GenerateForm() {
                                                 </label>
                                             </div>
                                         </div>
-                                        <ReactToPrint
-                                            content={() => componentRef}
-                                            trigger={() => <button type="button" class="btn btn-light mb-2">Generate Receipt</button>}
-                                        />
+                                        <button type="submit" class="btn btn-light mb-2">Update Info</button>
                                     </div>
                                 </div>
                             </div>
@@ -121,11 +159,22 @@ export default function GenerateForm() {
                     </form>
                     <div className="card mt-5">
                         <div className="card-header">
-                            <h4 className="card-title">Receipt Preview</h4>
+                            <div className="row">
+                                <div className="col-6">
+                                    <h4 className="card-title">Receipt Preview</h4>
+                                </div>
+                                <div className="col-6">
+                                    <ReactToPrint
+                                        content={() => componentRef}
+                                        trigger={() => <a width="100px" href="javascript:" class="text-right"><i class="fe fe-printer"></i></a>}
+                                        onBeforeGetContent={() => data}
+                                    />
+                                </div>
+                            </div>
                         </div>
                         <div className="card-body">
                             <div ref={(response) => (componentRef = response)}>
-                                <BoltTemplate />
+                                <BoltTemplate data={data} />
                             </div>
                         </div>
                     </div>

@@ -13,7 +13,7 @@ export default function Home() {
                 <div className="text-center text-md-start text-light">
                   <h1 className=" display-2 fw-bold text-light  mb-3">Peter Kungu Transport Receipt</h1>
                   <p className="lead">Generate Transport Receipt every month here. You can
-                  generate both Uber and Bolt monthly receipt here and download as pdf file.</p>
+                  generate both Uber and Bolt monthly receipts here and download them as PDF file.</p>
                   <button type="button" onClick={() => router.push('/generate-form')} class="btn btn-light mb-2">Generate Receipt</button>
                 </div>
               </div>
