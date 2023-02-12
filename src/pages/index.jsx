@@ -4,8 +4,8 @@ import { useRouter } from 'next/router'
 export default function Home() {
   const router = useRouter()
   return (
-    <main>
-      <section style={{ backgroundColor: "#414B57" }} className="py-lg-4 py-2 bg-cover ">
+    <main style={{ backgroundColor: "#414B57" }}>
+      <section className="py-lg-4 py-2 bg-cover ">
         <div className="container ">
           <div className="row align-items-center">
             <div className="col-lg-6 col-12">
